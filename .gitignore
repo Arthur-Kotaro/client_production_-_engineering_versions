@@ -1,0 +1,65 @@
+# Build directories
+build*/
+*/build*/
+cmake-build-*/
+
+# Qt generated files
+*.user
+*.moc
+moc_*.cpp
+qrc_*.cpp
+*.qmlc
+*.jsc
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+*.gcda
+*.gcno
+*.gcov
+Testing/
+TestResults/
+
+# Deploy
+*.tar.gz
+*.zip
+*.appimage
+*.deb
+*.rpm
+
+# Logs
+*.log
+*.tmp
+
+# Configs with secrets
+*_secret.json
+*.key
+*.pem
+*.crt
+
+# OS specific
+.DS_Store
+Thumbs.db
