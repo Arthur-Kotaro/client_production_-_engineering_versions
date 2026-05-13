@@ -1,0 +1,5 @@
+--resource
+/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/.qt/rcc/qmake_ProductionClient.qrc
+--resource
+/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/.qt/rcc/ProductionClient_raw_qml_0.qrc
+/ProductionClient/qml/main.qml

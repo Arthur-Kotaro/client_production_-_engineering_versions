@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/ProductionClient/">
+    <file alias="qml/main.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/main.qml</file>
+  </qresource>
+</RCC>
+

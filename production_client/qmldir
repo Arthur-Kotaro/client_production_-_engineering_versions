@@ -1,0 +1,7 @@
+module ProductionClient
+linktarget ProductionClientplugin
+optional plugin ProductionClientplugin
+classname ProductionClientPlugin
+typeinfo ProductionClient.qmltypes
+prefer :/ProductionClient/
+

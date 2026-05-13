@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/ProductionClient">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client</file>
+
+  </qresource>
+</RCC>
