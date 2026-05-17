@@ -10,74 +10,73 @@ Rectangle {
     
     signal loginSuccess()
     
-    Rectangle {
-        anchors.centerIn: parent
-        width: Math.min(parent.width - 40, 380)
-        height: 520
-        radius: 12
-        color: Colors.surface
-        border.color: Colors.border
-        border.width: 1
+    ColumnLayout {
+        anchors.fill: parent
+        anchors.margins: 20
+        spacing: 20
         
-        ColumnLayout {
-            anchors.fill: parent
-            anchors.margins: 24
-            spacing: 20
-            
-            Text {
-                text: "🏢"
-                font.pixelSize: 48
-                Layout.alignment: Qt.AlignHCenter
-            }
-            
-            Text {
-                text: "Вход в систему"
-                font.pixelSize: 24
-                font.bold: true
-                color: Colors.text
-                Layout.alignment: Qt.AlignHCenter
-            }
-            
-            Text {
-                text: "Корпоративная информационная система"
-                font.pixelSize: 12
-                color: Colors.textSecondary
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-            }
+        Item { Layout.fillHeight: true }
+        
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 450
+            radius: 16
+            color: Colors.surface
+            border.color: Colors.border
+            border.width: 1
             
             ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 8
+                anchors.fill: parent
+                anchors.margins: 30
+                spacing: 20
                 
                 Text {
-                    text: "Email"
-                    font.pixelSize: 14
-                    font.bold: true
-                    color: Colors.text
+                    text: "🏢"
+                    font.pixelSize: 48
+                    Layout.alignment: Qt.AlignHCenter
                 }
                 
-                Rectangle {
+                Text {
+                    text: "Вход в систему"
+                    font.pixelSize: 24
+                    font.bold: true
+                    color: Colors.text
+                    Layout.alignment: Qt.AlignHCenter
+                }
+                
+                Text {
+                    text: "Engineering :re"
+                    font.pixelSize: 12
+                    color: Colors.textSecondary
+                    Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
-                    height: 48
-                    radius: 8
-                    color: Colors.surface
-                    border.color: emailField.activeFocus ? Colors.button : Colors.border
-                    border.width: emailField.activeFocus ? 2 : 1
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 8
                     
-                    RowLayout {
-                        anchors.fill: parent
-                        anchors.margins: 12
-                        spacing: 8
-                        
-                        Text { text: "📧"; font.pixelSize: 18 }
+                    Text {
+                        text: "Email"
+                        font.pixelSize: 14
+                        font.bold: true
+                        color: Colors.text
+                    }
+                    
+                    Rectangle {
+                        Layout.fillWidth: true
+                        height: 48
+                        radius: 8
+                        color: Colors.surface
+                        border.color: emailField.activeFocus ? Colors.button : Colors.border
+                        border.width: emailField.activeFocus ? 2 : 1
                         
                         TextField {
                             id: emailField
-                            Layout.fillWidth: true
-                            placeholderText: "user@company.com"
+                            anchors.fill: parent
+                            anchors.margins: 12
+                            placeholderText: "user@example.com"
                             placeholderTextColor: Colors.textSecondary
                             color: Colors.text
                             font.pixelSize: 14
@@ -87,37 +86,30 @@ Rectangle {
                         }
                     }
                 }
-            }
-            
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 8
                 
-                Text {
-                    text: "Пароль"
-                    font.pixelSize: 14
-                    font.bold: true
-                    color: Colors.text
-                }
-                
-                Rectangle {
+                ColumnLayout {
                     Layout.fillWidth: true
-                    height: 48
-                    radius: 8
-                    color: Colors.surface
-                    border.color: passwordField.activeFocus ? Colors.button : Colors.border
-                    border.width: passwordField.activeFocus ? 2 : 1
+                    spacing: 8
                     
-                    RowLayout {
-                        anchors.fill: parent
-                        anchors.margins: 12
-                        spacing: 8
-                        
-                        Text { text: "🔒"; font.pixelSize: 18 }
+                    Text {
+                        text: "Пароль"
+                        font.pixelSize: 14
+                        font.bold: true
+                        color: Colors.text
+                    }
+                    
+                    Rectangle {
+                        Layout.fillWidth: true
+                        height: 48
+                        radius: 8
+                        color: Colors.surface
+                        border.color: passwordField.activeFocus ? Colors.button : Colors.border
+                        border.width: passwordField.activeFocus ? 2 : 1
                         
                         TextField {
                             id: passwordField
-                            Layout.fillWidth: true
+                            anchors.fill: parent
+                            anchors.margins: 12
                             placeholderText: "••••••••"
                             placeholderTextColor: Colors.textSecondary
                             echoMode: TextField.Password
@@ -127,53 +119,50 @@ Rectangle {
                             selectByMouse: true
                             onAccepted: performLogin()
                         }
-                        
-                        Button {
-                            width: 32
-                            height: 32
-                            background: Rectangle { color: "transparent" }
-                            contentItem: Text {
-                                text: passwordField.echoMode === TextField.Password ? "👁️" : "🙈"
-                                font.pixelSize: 18
-                            }
-                            onClicked: passwordField.echoMode = passwordField.echoMode === TextField.Password ?
-                                        TextField.Normal : TextField.Password
-                        }
                     }
                 }
-            }
-            
-            Button {
-                text: "Войти"
-                Layout.fillWidth: true
-                Layout.preferredHeight: 48
-                onClicked: performLogin()
-            }
-            
-            BusyIndicator {
-                id: loginBusy
-                running: false
-                Layout.alignment: Qt.AlignHCenter
-                visible: running
-            }
-            
-            Text {
-                id: errorText
-                visible: false
-                color: Colors.error
-                font.pixelSize: 12
-                wrapMode: Text.WordWrap
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignHCenter
-            }
-            
-            RowLayout {
-                Layout.alignment: Qt.AlignHCenter
-                spacing: 16
+                
+                Button {
+                    text: "Войти"
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 48
+                    onClicked: performLogin()
+                    background: Rectangle {
+                        color: Colors.button
+                        radius: 8
+                    }
+                    contentItem: Text {
+                        text: parent.text
+                        color: Colors.buttonText
+                        font.pixelSize: 14
+                        font.bold: true
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                }
+                
+                BusyIndicator {
+                    id: loginBusy
+                    running: false
+                    Layout.alignment: Qt.AlignHCenter
+                    visible: running
+                }
+                
+                Text {
+                    id: errorText
+                    visible: false
+                    color: Colors.error
+                    font.pixelSize: 12
+                    wrapMode: Text.WordWrap
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                
                 Text {
                     text: "Забыли пароль?"
                     color: Colors.button
                     font.pixelSize: 12
+                    Layout.alignment: Qt.AlignHCenter
                     MouseArea {
                         anchors.fill: parent
                         cursorShape: Qt.PointingHandCursor
@@ -182,6 +171,8 @@ Rectangle {
                 }
             }
         }
+        
+        Item { Layout.fillHeight: true }
     }
     
     function performLogin() {

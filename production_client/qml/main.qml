@@ -23,7 +23,7 @@ ApplicationWindow {
     }
     
     function toggleTheme() {
-        if (Colors.background === "#1a1a2e") {
+        if (Colors.isDarkTheme) {
             Colors.setLightTheme()
         } else {
             Colors.setDarkTheme()
