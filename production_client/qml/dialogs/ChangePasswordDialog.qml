@@ -7,11 +7,24 @@ Dialog {
     id: root
     title: "Смена пароля"
     modal: true
-    width: 400
+    width: 420
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     
     signal passwordChanged()
+    
+    header: Item {
+        height: 50
+        width: parent.width
+        
+        Text {
+            text: "Смена пароля"
+            font.pixelSize: 18
+            font.bold: true
+            color: Colors.text
+            anchors.centerIn: parent
+        }
+    }
     
     background: Rectangle {
         color: Colors.surface
@@ -29,6 +42,7 @@ Dialog {
             color: Colors.textSecondary
             font.pixelSize: 12
             Layout.fillWidth: true
+            horizontalAlignment: Text.AlignHCenter
         }
         
         TextField {
@@ -80,6 +94,7 @@ Dialog {
             font.pixelSize: 11
             wrapMode: Text.WordWrap
             Layout.fillWidth: true
+            horizontalAlignment: Text.AlignHCenter
         }
         
         RowLayout {
@@ -89,29 +104,43 @@ Dialog {
             Button {
                 text: "Отмена"
                 Layout.fillWidth: true
+                implicitHeight: 44
                 onClicked: root.close()
+                
                 background: Rectangle {
                     color: Colors.button
                     radius: 6
                 }
+                
                 contentItem: Text {
                     text: parent.text
                     color: Colors.buttonText
+                    font.pixelSize: 14
+                    font.bold: true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                 }
             }
             
             Button {
                 text: "Сменить"
                 Layout.fillWidth: true
+                implicitHeight: 44
                 enabled: newPasswordField.text.length >= 6 && newPasswordField.text === confirmPasswordField.text
                 onClicked: changePassword()
+                
                 background: Rectangle {
                     color: Colors.button
                     radius: 6
                 }
+                
                 contentItem: Text {
                     text: parent.text
                     color: Colors.buttonText
+                    font.pixelSize: 14
+                    font.bold: true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                 }
             }
         }

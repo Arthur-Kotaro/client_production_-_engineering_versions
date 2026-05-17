@@ -19,7 +19,7 @@ Rectangle {
         
         Rectangle {
             Layout.fillWidth: true
-            Layout.preferredHeight: 450
+            Layout.preferredHeight: 500
             radius: 16
             color: Colors.surface
             border.color: Colors.border
@@ -64,26 +64,27 @@ Rectangle {
                         color: Colors.text
                     }
                     
-                    Rectangle {
+                    TextField {
+                        id: emailField
                         Layout.fillWidth: true
                         height: 48
-                        radius: 8
-                        color: Colors.surface
-                        border.color: emailField.activeFocus ? Colors.button : Colors.border
-                        border.width: emailField.activeFocus ? 2 : 1
-                        
-                        TextField {
-                            id: emailField
-                            anchors.fill: parent
-                            anchors.margins: 12
-                            placeholderText: "user@example.com"
-                            placeholderTextColor: Colors.textSecondary
-                            color: Colors.text
-                            font.pixelSize: 14
-                            background: Rectangle { color: "transparent" }
-                            selectByMouse: true
-                            onAccepted: performLogin()
+                        placeholderText: ""
+                        color: Colors.text
+                        font.pixelSize: 14
+                        selectionColor: Colors.button
+                        selectedTextColor: Colors.buttonText
+                        background: Rectangle {
+                            color: Colors.surface
+                            border.color: emailField.activeFocus ? Colors.button : Colors.border
+                            border.width: emailField.activeFocus ? 2 : 1
+                            radius: 8
                         }
+                        leftPadding: 12
+                        rightPadding: 12
+                        topPadding: 12
+                        bottomPadding: 12
+                        selectByMouse: true
+                        onAccepted: performLogin()
                     }
                 }
                 
@@ -98,27 +99,28 @@ Rectangle {
                         color: Colors.text
                     }
                     
-                    Rectangle {
+                    TextField {
+                        id: passwordField
                         Layout.fillWidth: true
                         height: 48
-                        radius: 8
-                        color: Colors.surface
-                        border.color: passwordField.activeFocus ? Colors.button : Colors.border
-                        border.width: passwordField.activeFocus ? 2 : 1
-                        
-                        TextField {
-                            id: passwordField
-                            anchors.fill: parent
-                            anchors.margins: 12
-                            placeholderText: "••••••••"
-                            placeholderTextColor: Colors.textSecondary
-                            echoMode: TextField.Password
-                            color: Colors.text
-                            font.pixelSize: 14
-                            background: Rectangle { color: "transparent" }
-                            selectByMouse: true
-                            onAccepted: performLogin()
+                        placeholderText: ""
+                        echoMode: TextField.Password
+                        color: Colors.text
+                        font.pixelSize: 14
+                        selectionColor: Colors.button
+                        selectedTextColor: Colors.buttonText
+                        background: Rectangle {
+                            color: Colors.surface
+                            border.color: passwordField.activeFocus ? Colors.button : Colors.border
+                            border.width: passwordField.activeFocus ? 2 : 1
+                            radius: 8
                         }
+                        leftPadding: 12
+                        rightPadding: 12
+                        topPadding: 12
+                        bottomPadding: 12
+                        selectByMouse: true
+                        onAccepted: performLogin()
                     }
                 }
                 
@@ -156,6 +158,11 @@ Rectangle {
                     wrapMode: Text.WordWrap
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
+                }
+                
+                Item {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 10
                 }
                 
                 Text {

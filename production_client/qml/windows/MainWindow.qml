@@ -29,7 +29,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: 75
+        height: 85
         color: Colors.primary
         z: 1
         
@@ -44,10 +44,13 @@ Rectangle {
         
         RowLayout {
             anchors.fill: parent
-            anchors.margins: 15
-            spacing: 20
+            anchors.topMargin: 8
+            anchors.bottomMargin: 8
+            anchors.leftMargin: 15
+            anchors.rightMargin: 15
+            spacing: 15
             
-            // Левая часть - информация о пользователе
+            // Левая часть - информация о пользователе (увеличен шрифт)
             ColumnLayout {
                 spacing: 4
                 Layout.fillWidth: true
@@ -55,7 +58,7 @@ Rectangle {
                 Text {
                     text: mainWindowBridge ? mainWindowBridge.userName : "Пользователь"
                     color: Colors.text
-                    font.pixelSize: 16
+                    font.pixelSize: 17
                     font.bold: true
                 }
                 Text {
@@ -71,10 +74,11 @@ Rectangle {
                 }
             }
             
-            // Центральная часть - срок пароля
+            // Центральная часть - срок пароля (увеличен шрифт)
             ColumnLayout {
                 spacing: 4
                 Layout.alignment: Qt.AlignVCenter
+                Layout.leftMargin: -20
                 
                 Text {
                     text: "Пароль действителен:"
@@ -89,18 +93,17 @@ Rectangle {
                 }
             }
             
-            // Правая часть - кнопки (прижаты к правому краю)
+            // Правая часть - кнопки
             RowLayout {
                 spacing: 12
-                Layout.alignment: Qt.AlignRight
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 
                 Button {
                     text: "🌓"
-                    font.pixelSize: 20
-                    font.bold: true
+                    font.pixelSize: 22
                     flat: true
-                    implicitWidth: 44
-                    implicitHeight: 44
+                    implicitWidth: 55
+                    implicitHeight: 55
                     onClicked: root.themeToggleRequested()
                     ToolTip.text: "Сменить тему"
                     ToolTip.visible: hovered
@@ -108,11 +111,10 @@ Rectangle {
                 
                 Button {
                     text: "🔑"
-                    font.pixelSize: 20
-                    font.bold: true
+                    font.pixelSize: 22
                     flat: true
-                    implicitWidth: 44
-                    implicitHeight: 44
+                    implicitWidth: 55
+                    implicitHeight: 55
                     onClicked: changePasswordDialog.open()
                     ToolTip.text: "Сменить пароль"
                     ToolTip.visible: hovered
@@ -120,11 +122,10 @@ Rectangle {
                 
                 Button {
                     text: "🚪"
-                    font.pixelSize: 20
-                    font.bold: true
+                    font.pixelSize: 22
                     flat: true
-                    implicitWidth: 44
-                    implicitHeight: 44
+                    implicitWidth: 55
+                    implicitHeight: 55
                     onClicked: {
                         mainWindowBridge.logout()
                         root.logoutRequested()
@@ -136,7 +137,6 @@ Rectangle {
         }
     }
     
-    // Основная область
     Rectangle {
         anchors.top: topBar.bottom
         anchors.left: parent.left
@@ -148,7 +148,7 @@ Rectangle {
             anchors.centerIn: parent
             text: "Добро пожаловать!\nВыберите виджет в меню"
             color: Colors.textSecondary
-            font.pixelSize: 20
+            font.pixelSize: 18
             horizontalAlignment: Text.AlignHCenter
         }
     }
