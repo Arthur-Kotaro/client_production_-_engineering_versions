@@ -7,71 +7,10 @@
 
 #include "userserviceclient/ApiClient.h"
 #include "userserviceclient/AuthService.h"
+#include "src/qml_bridge/AuthBridge.h"
+#include "src/qml_bridge/MainWindowBridge.h"
 
 using namespace UsersService;
-
-class AppBridge : public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(bool isLoggedIn READ isLoggedIn NOTIFY loginStatusChanged)
-    Q_PROPERTY(QString userName READ userName NOTIFY userDataChanged)
-    Q_PROPERTY(QString userPosition READ userPosition NOTIFY userDataChanged)
-
-public:
-    AppBridge(QObject* parent = nullptr) : QObject(parent) {
-        m_apiClient = std::make_shared<ApiClient>();
-        m_apiClient->setServerUrl("localhost", 8000);
-        m_authService = std::make_shared<AuthService>(m_apiClient);
-        
-        connect(m_authService.get(), &AuthService::loginCompleted,
-                this, &AppBridge::onLoginCompleted);
-    }
-    
-    bool isLoggedIn() const { return m_isLoggedIn; }
-    QString userName() const { return m_userName; }
-    QString userPosition() const { return m_userPosition; }
-    
-    Q_INVOKABLE void login(const QString& email, const QString& password) {
-        qDebug() << "Login attempt:" << email;
-        m_authService->login(email, password);
-    }
-    
-    Q_INVOKABLE void logout() {
-        m_authService->logout();
-        m_isLoggedIn = false;
-        m_userName.clear();
-        m_userPosition.clear();
-        emit loginStatusChanged();
-        emit userDataChanged();
-    }
-
-signals:
-    void loginStatusChanged();
-    void userDataChanged();
-    void loginFailed(const QString& message);
-
-private slots:
-    void onLoginCompleted(const AuthResult& result) {
-        if (result.success) {
-            qDebug() << "Login successful!";
-            m_isLoggedIn = true;
-            m_userName = result.session.fullName;
-            m_userPosition = result.session.position;
-            emit loginStatusChanged();
-            emit userDataChanged();
-        } else {
-            qDebug() << "Login failed:" << result.errorMessage;
-            emit loginFailed(result.errorMessage);
-        }
-    }
-
-private:
-    std::shared_ptr<ApiClient> m_apiClient;
-    std::shared_ptr<AuthService> m_authService;
-    bool m_isLoggedIn = false;
-    QString m_userName;
-    QString m_userPosition;
-};
 
 int main(int argc, char *argv[])
 {
@@ -82,12 +21,29 @@ int main(int argc, char *argv[])
     
     QQmlApplicationEngine engine;
     
-    // Регистрируем мост для QML
-    AppBridge bridge;
-    engine.rootContext()->setContextProperty("appBridge", &bridge);
+    // Создаём API клиент
+    auto apiClient = std::make_shared<ApiClient>();
     
-    // Загружаем QML из ресурсов
-    engine.load(QUrl("qrc:/qml/main.qml"));
+    // Настройка подключения к серверу (запущен через uvicorn)
+    // Сервер доступен на всех интерфейсах (0.0.0.0), порт 8000
+    apiClient->setServerUrl("localhost", 8000);  // Для локального подключения
+    // apiClient->setServerUrl("127.0.0.1", 8000);  // Альтернативный вариант
+    
+    qDebug() << "Connecting to User Service at localhost:8000";
+    
+    // Создаём Auth сервис
+    auto authService = std::make_shared<AuthService>(apiClient);
+    
+    // Создаём мосты для QML
+    AuthBridge authBridge(authService);
+    MainWindowBridge mainWindowBridge(authService);
+    
+    // Регистрируем объекты в QML
+    engine.rootContext()->setContextProperty("authBridge", &authBridge);
+    engine.rootContext()->setContextProperty("mainWindowBridge", &mainWindowBridge);
+    
+    // Загружаем QML
+    engine.load(QUrl("qrc:/ProductionClient/qml/main.qml"));
     
     if (engine.rootObjects().isEmpty()) {
         qDebug() << "Failed to load QML";
@@ -96,5 +52,3 @@ int main(int argc, char *argv[])
     
     return app.exec();
 }
-
-#include "main.moc"

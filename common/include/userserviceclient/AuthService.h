@@ -2,26 +2,27 @@
 #define AUTHSERVICE_H
 
 #include "UsersServiceClient_global.h"
+#include "UserProfile.h"
 #include <QObject>
-#include <QJsonObject>
-#include <QDateTime>
 #include <memory>
 
 namespace UsersService {
 
 class ApiClient;
 
+struct USERSERVICECLIENT_EXPORT LoginResponse {
+    QString accessToken;
+    QString refreshToken;
+    QString tokenType = "bearer";
+    bool requiresPasswordChange = false;
+};
+
 struct USERSERVICECLIENT_EXPORT UserSession {
     bool isValid = false;
     QString accessToken;
     QString refreshToken;
+    UserProfile profile;
     QJsonObject userPayload;
-    QString userId;
-    QString email;
-    QString fullName;
-    QString position;
-    QDateTime passwordExpiresAt;
-    QList<QJsonObject> projects;
 };
 
 struct USERSERVICECLIENT_EXPORT AuthResult {
@@ -29,6 +30,7 @@ struct USERSERVICECLIENT_EXPORT AuthResult {
     QString errorType;
     QString errorMessage;
     UserSession session;
+    bool requiresPasswordChange = false;
 };
 
 class USERSERVICECLIENT_EXPORT AuthService : public QObject
@@ -40,10 +42,13 @@ public:
     
     void login(const QString& email, const QString& password);
     void refreshToken(const QString& refreshToken);
-    void logout();
-    void changePassword(const QString& currentPassword, const QString& newPassword);
+    void logout(const QString& refreshToken = QString());
+    void changePassword(const QString& currentPassword, const QString& newPassword, 
+                        const QString& confirmPassword);
     void resetPassword(const QString& email);
     void checkPasswordExpiry();
+    void fetchUserProfile();
+    void fetchUserStatus();
     
     UserSession currentSession() const;
     void restoreSession(const QString& accessToken, const QString& refreshToken);
@@ -55,8 +60,14 @@ signals:
     void passwordChanged(bool success, const QString& message);
     void passwordReset(bool success, const QString& message);
     void passwordExpiryInfo(int daysRemaining, bool isExpired, const QString& expiresAt);
+    void profileFetched(const UserProfile& profile);
+    void statusFetched(const QJsonObject& status);
     void sessionExpired();
 
+private:
+    void parseJwtPayload(const QString& token, QJsonObject& payload);
+    void updateSessionFromTokens();
+    
 private:
     std::shared_ptr<ApiClient> m_apiClient;
     UserSession m_currentSession;

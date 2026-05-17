@@ -45,6 +45,12 @@ signals:
     void onlineStatusChanged(bool isOnline);
     void tokenExpired();
 
+private:
+    QUrl buildUrl(const QString& endpoint) const;
+    void processReply(QNetworkReply* reply, ApiCallback callback);
+    void setupSslConfiguration();
+    void checkConnectivity();
+
 protected:
     bool m_isOnline = false;
     QString m_authToken;

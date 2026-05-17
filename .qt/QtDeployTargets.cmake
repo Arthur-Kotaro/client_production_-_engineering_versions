@@ -1,7 +1,5 @@
 set(__QT_DEPLOY_TARGET_UsersServiceClient_FILE /home/kotaro/code/IS_RE_engineering/CLIENT/common/libUsersServiceClient.a)
 set(__QT_DEPLOY_TARGET_UsersServiceClient_TYPE STATIC_LIBRARY)
-set(__QT_DEPLOY_TARGET_EngineeringClient_FILE /home/kotaro/code/IS_RE_engineering/CLIENT/engineering_client/EngineeringClient)
-set(__QT_DEPLOY_TARGET_EngineeringClient_TYPE EXECUTABLE)
 set(__QT_DEPLOY_TARGET_ProductionClient_FILE /home/kotaro/code/IS_RE_engineering/CLIENT/production_client/libProductionClient.so)
 set(__QT_DEPLOY_TARGET_ProductionClient_TYPE SHARED_LIBRARY)
 set(__QT_DEPLOY_TARGET_ProductionClientplugin_FILE /home/kotaro/code/IS_RE_engineering/CLIENT/production_client/libProductionClientplugin.so)

@@ -21,6 +21,7 @@ set(HEADERS
 add_library(UsersServiceClient STATIC ${HEADERS})
 
 target_sources(UsersServiceClient PRIVATE
+    src/UserProfile.cpp
     src/ApiClient.cpp
     src/AuthService.cpp
     src/TokenManager.cpp
@@ -54,18 +55,21 @@ if(UNIX AND NOT APPLE)
     endif()
 endif()
 target_sources(UsersServiceClient PRIVATE
+    src/UserProfile.cpp
     moc_AuthService.cpp
     moc_ApiClient.cpp
 )
 
 # Add manually generated moc files
 target_sources(UsersServiceClient PRIVATE
+    src/UserProfile.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/moc_AuthService.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/moc_ApiClient.cpp
 )
 
 # Add manually generated moc files for Qt6
 target_sources(UsersServiceClient PRIVATE
+    src/UserProfile.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/moc_AuthService.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/moc_ApiClient.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/moc_TokenManager.cpp
