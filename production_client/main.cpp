@@ -15,34 +15,28 @@ using namespace UsersService;
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-    QGuiApplication::setApplicationName("CorporateClient");
+    QGuiApplication::setApplicationName("Engineering :re");
     
     QQuickStyle::setStyle("Material");
     
     QQmlApplicationEngine engine;
     
-    // Создаём API клиент
-    auto apiClient = std::make_shared<ApiClient>();
+    // Регистрируем Colors как синглтон
+    qmlRegisterSingletonType(QUrl("qrc:/ProductionClient/qml/styles/Colors.qml"), "Styles", 1, 0, "Colors");
     
-    // Настройка подключения к серверу (запущен через uvicorn)
-    // Сервер доступен на всех интерфейсах (0.0.0.0), порт 8000
-    apiClient->setServerUrl("localhost", 8000);  // Для локального подключения
-    // apiClient->setServerUrl("127.0.0.1", 8000);  // Альтернативный вариант
+    auto apiClient = std::make_shared<ApiClient>();
+    apiClient->setServerUrl("localhost", 8000);
     
     qDebug() << "Connecting to User Service at localhost:8000";
     
-    // Создаём Auth сервис
     auto authService = std::make_shared<AuthService>(apiClient);
     
-    // Создаём мосты для QML
     AuthBridge authBridge(authService);
     MainWindowBridge mainWindowBridge(authService);
     
-    // Регистрируем объекты в QML
     engine.rootContext()->setContextProperty("authBridge", &authBridge);
     engine.rootContext()->setContextProperty("mainWindowBridge", &mainWindowBridge);
     
-    // Загружаем QML
     engine.load(QUrl("qrc:/ProductionClient/qml/main.qml"));
     
     if (engine.rootObjects().isEmpty()) {

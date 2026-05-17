@@ -1,15 +1,22 @@
 # Build directories
-build*/
-*/build*/
+build/
+*/build/
 cmake-build-*/
+out/
+*.build/
 
 # Qt generated files
 *.user
 *.moc
 moc_*.cpp
+moc_*.h
 qrc_*.cpp
+ui_*.h
 *.qmlc
 *.jsc
+*.qmltypes
+qmldir
+*.qmlproject.user
 
 # Compiled files
 *.o
@@ -20,13 +27,24 @@ qrc_*.cpp
 *.dylib
 *.a
 *.lib
+*.dylib
+*.exp
+*.ilk
+*.pdb
+*.manifest
 
 # CMake
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 Makefile
+CMakeUserPresets.json
 compile_commands.json
+CTestTestfile.cmake
+_CPack_Packages/
+*.cmake
+!CMakeLists.txt
+!*.cmake.in
 
 # IDE
 .vscode/
@@ -34,6 +52,14 @@ compile_commands.json
 *.swp
 *.swo
 *~
+.project
+.classpath
+.cproject
+.settings/
+*.kdev4
+*.kate-swp
+.clangd/
+.clang-tidy
 
 # Testing
 coverage/
@@ -42,24 +68,132 @@ coverage/
 *.gcov
 Testing/
 TestResults/
+*.log
+*.trx
+*.junit.xml
+coverage.info
+.gcovr/
 
 # Deploy
 *.tar.gz
+*.tar.bz2
 *.zip
 *.appimage
 *.deb
 *.rpm
+*.dmg
+*.exe
+*.msi
 
 # Logs
 *.log
 *.tmp
+*.temp
+logs/
+*.pid
 
 # Configs with secrets
 *_secret.json
 *.key
 *.pem
 *.crt
+*.csr
+.secrets/
+.env
+.env.local
+.env.*.local
 
 # OS specific
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Qt Creator
+*.autosave
+*.creator*
+*.files
+*.includes
+*.config
+*.creator.user*
+
+# Clion
+.cache/
+.clion/
+CMakeLists.txt.user
+
+# MOC / generated files
+*_autogen/
+*.moc
+moc_*.cpp
+moc_*.h
+*.moc.cpp
+
+# QML cache
+*.qmlc
+*.jsc
+.qmlcache/
+.qmake.stash
+
+# Project specific
+production_client/ProductionClient*
+production_client/libProductionClient*
+production_client/*_autogen/
+production_client/.qt/
+production_client/.rcc/
+engineering_client/EngineeringClient*
+engineering_client/*_autogen/
+common/*_autogen/
+common/moc_*.cpp
+common/*.moc
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pytype/
+.coverage
+.coverage.*
+.flask_session/
+instance/
+.webassets-cache
+
+# Docker
+.dockerignore
+*.tar
+*.tar.gz
+
+# Documentation
+docs/_build/
+docs/api/
+*.doctree
+
+# Package managers
+vcpkg_installed/
+vcpkg-manifest-install.log
+conaninfo.txt
+conanbuildinfo.*
+conan.lock

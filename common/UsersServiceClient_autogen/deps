@@ -5,6 +5,7 @@ UsersServiceClient_autogen/timestamp: \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/AuthService.h \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/TokenManager.h \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/UserDataModels.h \
+	/home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/UserProfile.h \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/UsersServiceClient_global.h \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/moc_ApiClient.cpp \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/moc_AuthService.cpp \
@@ -13,6 +14,7 @@ UsersServiceClient_autogen/timestamp: \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/src/AuthService.cpp \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/src/TokenManager.cpp \
 	/home/kotaro/code/IS_RE_engineering/CLIENT/common/src/UserDataModels.cpp \
+	/home/kotaro/code/IS_RE_engineering/CLIENT/common/src/UserProfile.cpp \
 	/usr/include/asm-generic/bitsperlong.h \
 	/usr/include/asm-generic/errno-base.h \
 	/usr/include/asm-generic/errno.h \
@@ -270,6 +272,7 @@ UsersServiceClient_autogen/timestamp: \
 	/usr/include/qt6/QtCore/QObject \
 	/usr/include/qt6/QtCore/QSharedDataPointer \
 	/usr/include/qt6/QtCore/QString \
+	/usr/include/qt6/QtCore/QStringList \
 	/usr/include/qt6/QtCore/QUrl \
 	/usr/include/qt6/QtCore/QVariant \
 	/usr/include/qt6/QtCore/QtGlobal \

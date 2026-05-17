@@ -16,7 +16,7 @@ set(QML_FILES
     qml/windows/AuthWindow.qml
     qml/windows/MainWindow.qml
     qml/windows/SplashScreen.qml
-    qml/components/TopBar.qml
+    #   qml/components/TopBar.qml     #FUNCTIONALITY migrated to MainWindow
     qml/components/WidgetLoader.qml
     qml/components/ToastNotification.qml
     qml/components/LoadingSpinner.qml

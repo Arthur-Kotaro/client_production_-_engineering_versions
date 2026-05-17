@@ -1,0 +1,23 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "standardButtons",
+                            "line": 6,
+                            "message": "Could not find property \"standardButtons\"."
+                        }
+                    ],
+                    "filePath": "/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/dialogs/ErrorDialog.qml"
+                }
+            ],
+            "moduleId": "ProductionClient(ProductionClient)"
+        }
+    ]
+}

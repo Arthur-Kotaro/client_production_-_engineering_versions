@@ -1,0 +1,23 @@
+<RCC>
+  <qresource prefix="/ProductionClient/">
+    <file alias="qml/main.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/main.qml</file>
+    <file alias="qml/windows/AuthWindow.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/windows/AuthWindow.qml</file>
+    <file alias="qml/windows/MainWindow.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/windows/MainWindow.qml</file>
+    <file alias="qml/windows/SplashScreen.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/windows/SplashScreen.qml</file>
+    <file alias="qml/components/WidgetLoader.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/components/WidgetLoader.qml</file>
+    <file alias="qml/components/ToastNotification.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/components/ToastNotification.qml</file>
+    <file alias="qml/components/LoadingSpinner.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/components/LoadingSpinner.qml</file>
+    <file alias="qml/components/PasswordExpiryWarning.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/components/PasswordExpiryWarning.qml</file>
+    <file alias="qml/dialogs/ChangePasswordDialog.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/dialogs/ChangePasswordDialog.qml</file>
+    <file alias="qml/dialogs/ConfirmDialog.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/dialogs/ConfirmDialog.qml</file>
+    <file alias="qml/dialogs/ErrorDialog.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/dialogs/ErrorDialog.qml</file>
+    <file alias="qml/styles/AppStyle.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/styles/AppStyle.qml</file>
+    <file alias="qml/styles/Colors.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/styles/Colors.qml</file>
+    <file alias="qml/styles/Typography.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/styles/Typography.qml</file>
+    <file alias="qml/styles/Button.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/styles/Button.qml</file>
+    <file alias="qml/utils/DateUtils.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/utils/DateUtils.qml</file>
+    <file alias="qml/utils/StringUtils.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/utils/StringUtils.qml</file>
+    <file alias="qml/utils/Validators.qml">/home/kotaro/code/IS_RE_engineering/CLIENT/production_client/qml/utils/Validators.qml</file>
+  </qresource>
+</RCC>
+

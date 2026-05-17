@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/kotaro/code/IS_RE_engineering/CLIENT/build/cmake_install.cmake",
+		"/home/kotaro/code/IS_RE_engineering/CLIENT/build/common/cmake_install.cmake",
+		"/home/kotaro/code/IS_RE_engineering/CLIENT/build/production_client/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -40,9 +40,9 @@ private slots:
     void onLoginCompleted(const AuthResult& result) {
         if (result.success) {
             std::cout << "\n✅ Login successful!\n";
-            std::cout << "  User: " << result.session.fullName.toStdString() << "\n";
-            std::cout << "  Email: " << result.session.email.toStdString() << "\n";
-            std::cout << "  Position: " << result.session.position.toStdString() << "\n";
+            std::cout << "  User: " << result.session.profile.userName.toStdString() << "\n";
+            std::cout << "  Email: " << result.session.profile.email.toStdString() << "\n";
+           // std::cout << "  Position: " << result.session.profile.position.toStdString() << "\n";
             m_currentSession = result.session;
         } else {
             std::cout << "\n❌ Login failed!\n";
@@ -73,7 +73,7 @@ private:
         while (true) {
             std::cout << "\n════════════════════════════════════════════\n";
             if (m_currentSession.isValid) {
-                std::cout << "  ✅ Logged in as: " << m_currentSession.email.toStdString() << "\n";
+                std::cout << "  ✅ Logged in as: " << m_currentSession.profile.email.toStdString() << "\n";
                 std::cout << "────────────────────────────────────────\n";
                 std::cout << "  1. Check password expiry\n";
                 std::cout << "  2. Change password\n";
@@ -143,6 +143,7 @@ private:
         std::cout << "  New password: ";
         std::cin >> newPwd;
         m_authService->changePassword(QString::fromStdString(currentPwd),
+                                      QString::fromStdString(newPwd),
                                       QString::fromStdString(newPwd));
     }
     
@@ -161,15 +162,15 @@ private:
     
     void healthCheck() {
         std::cout << "\n[Health check...]\n";
-        m_apiClient->get("/health", [](const ApiResponse& response) {
+        m_apiClient->get("/health", [this](const ApiResponse& response) {
             if (response.success) {
                 std::cout << "  ✅ Server is healthy\n";
             } else {
                 std::cout << "  ❌ Health check failed: " 
                           << response.errorString.toStdString() << "\n";
             }
+            showMainMenu();
         });
-        QTimer::singleShot(1000, this, &EngineeringConsoleUI::showMainMenu);
     }
 
 private:

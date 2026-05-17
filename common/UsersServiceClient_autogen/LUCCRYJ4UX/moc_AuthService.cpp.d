@@ -1,5 +1,6 @@
 /home/kotaro/code/IS_RE_engineering/CLIENT/common/UsersServiceClient_autogen/LUCCRYJ4UX/moc_AuthService.cpp: /home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/AuthService.h \
   /home/kotaro/code/IS_RE_engineering/CLIENT/common/UsersServiceClient_autogen/moc_predefs.h \
+  /home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/UserProfile.h \
   /home/kotaro/code/IS_RE_engineering/CLIENT/common/include/userserviceclient/UsersServiceClient_global.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -250,6 +251,7 @@
   /usr/include/qt6/QtCore/QDateTime \
   /usr/include/qt6/QtCore/QJsonObject \
   /usr/include/qt6/QtCore/QObject \
+  /usr/include/qt6/QtCore/QStringList \
   /usr/include/qt6/QtCore/QtGlobal \
   /usr/include/qt6/QtCore/q17memory.h \
   /usr/include/qt6/QtCore/q20bit.h \
